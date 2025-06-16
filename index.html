@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Nuzlocke Tracker</title>
+  <!-- Use a local copy of the Bootswatch Cosmo theme so styling works offline -->
+  <link rel="stylesheet" href="cosmo.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="react.development.js"></script>
+  <script src="react-dom.development.js"></script>
+  <script src="babel.min.js"></script>
+</head>
+<body>
+  <div class="container py-4 text-center" id="root"></div>
+  <script type="text/babel">
+    function App() {
+      const [routes, setRoutes] = React.useState([]);
+      const [natures, setNatures] = React.useState([]);
+
+      React.useEffect(() => {
+        const sheetId = '16sAyuGi_9KV6Ag64vItbsz7i5jw7xgDNK3bYvHLVNaE';
+        const routesUrl = `https://opensheet.elk.sh/${sheetId}/Routes`;
+        fetch(routesUrl)
+          .then(res => res.json())
+          .then(setRoutes)
+          .catch(console.error);
+
+        const naturesUrl = `https://opensheet.elk.sh/${sheetId}/Natures`;
+        fetch(naturesUrl)
+          .then(res => res.json())
+          .then(data => setNatures(data.map(r => r.Nature)))
+          .catch(console.error);
+      }, []);
+
+        return (
+          <div>
+            <h1 className="mb-4">Nuzlocke Tracker</h1>
+            {routes.map((row, idx) => (
+              <RouteRow key={idx} data={row} natures={natures} />
+            ))}
+          </div>
+        );
+      }
+
+      function RouteRow({ data, natures }) {
+        const [index, setIndex] = React.useState(0);
+        const pokemon = data.Pokemon.split(';').map(p => p.trim());
+        const sprites = data.Sprites ? data.Sprites.split(';').map(s => s.trim()) : [];
+        const spriteUrl = sprites[index] || '';
+
+        return (
+          <div className="mb-3">
+            <div className="row-container justify-content-center align-items-center gap-2">
+              <span className="route-label">{data.Route}</span>
+              <div className="cell">
+                <select className="form-select border-0" value={index} onChange={e => setIndex(Number(e.target.value))}>
+                  {pokemon.map((p, i) => (
+                    <option key={i} value={i}>{p}</option>
+                  ))}
+                </select>
+              </div>
+              {spriteUrl && <img className="pokemon-sprite" src={spriteUrl} alt={pokemon[index]} />}
+              <div className="cell">
+                <input type="text" className="form-control border-0" placeholder="Nickname" />
+              </div>
+              <div className="cell">
+                <select className="form-select border-0">
+                  {['Captured','Dead','Missed','Received','Shiny','Traded','Trash'].map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="cell">
+                <select className="form-select border-0">
+                  {natures.map((opt, i) => (
+                    <option key={i} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <button className="btn btn-outline-danger">Dead</button>
+              <button className="btn btn-outline-warning">Evolve</button>
+              <button className="btn btn-outline-success">Add to Team</button>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+  </script>
+</body>
+</html>
