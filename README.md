@@ -8,8 +8,12 @@ and a second dropdown whose options come from a `Natures` tab in the same sheet.
 ## Using Google Sheets as a Data Source
 
 1. Create a Google Sheet with a tab named `Routes`.
-2. Add two columns: `Route` and `Pokemon`. The `Pokemon` column can contain a
-   semicolon-separated list of Pokémon available on that route.
+2. Add three columns: `Route`, `Pokemon` and `Sprites`.
+   - `Pokemon` should contain a semicolon-separated list of Pokémon available on
+     that route.
+   - `Sprites` (optional) should contain matching semicolon-separated image URLs
+     for the Pokémon in the same order. These URLs will be shown next to the
+     selected Pokémon in the dropdown.
 3. (Optional) Add another tab called `Natures` with a single column `Nature` to
    populate the second dropdown on each row.
 4. Make the sheet public or publish it to the web so it can be fetched
@@ -42,3 +46,8 @@ theme when offline. React, ReactDOM and Babel are also bundled locally (`react.d
 internet connection. To try a different Bootswatch theme, download another CSS
 file and update the `<link>` in `index.html` accordingly (for example replace
 `cosmo.min.css` with `darkly.min.css`).
+
+Each dropdown and input field sits inside a light grey box with rounded corners
+and a fixed width so that all rows align. The page uses the system UI font
+family by default (`system-ui`, `-apple-system`, `Segoe UI`, etc.). These styles
+are defined in `style.css`.
