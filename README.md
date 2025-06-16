@@ -37,3 +37,8 @@ theme when offline. React, ReactDOM and Babel are also bundled locally (`react.d
 internet connection. To try a different Bootswatch theme, download another CSS
 file and update the `<link>` in `index.html` accordingly (for example replace
 `cosmo.min.css` with `darkly.min.css`).
+=======
+theme when offline. To try a different theme, download another Bootswatch CSS
+file and update the `<link>` in `index.html` accordingly (for example replace
+`cosmo.min.css` with `darkly.min.css`).
+=======
