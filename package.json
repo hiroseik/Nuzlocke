@@ -1,0 +1,13 @@
+{
+  "name": "nuzlocke",
+  "version": "1.0.0",
+  "description": "This repository contains a small prototype for tracking Pokémon game progress. It loads route data from a Google Sheet and displays a dropdown for each route using React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
