@@ -28,13 +28,17 @@ using React.
 This setup provides a minimal foundation that can be expanded into a richer
 application as more features (such as item tracking or statistics) are added.
 
-
 ## Styling the Prototype
 
 The page includes the [Bootswatch](https://bootswatch.com/) "Cosmo" theme. A
 copy of the CSS (`cosmo.min.css`) is bundled locally so the page still has the
+theme when offline. React, ReactDOM and Babel are also bundled locally (`react.development.js`,
+`react-dom.development.js`, `babel.min.js`) so the page works even without an
+internet connection. To try a different Bootswatch theme, download another CSS
+file and update the `<link>` in `index.html` accordingly (for example replace
+`cosmo.min.css` with `darkly.min.css`).
+=======
 theme when offline. To try a different theme, download another Bootswatch CSS
 file and update the `<link>` in `index.html` accordingly (for example replace
 `cosmo.min.css` with `darkly.min.css`).
 =======
-
