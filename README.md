@@ -30,6 +30,7 @@ and a second dropdown whose options come from another tab in the same sheet.
    each route. Each row lets you pick a Pokémon, enter a nickname, choose a
    status, and select an option from the `Options` tab if present.
 
+
 This setup provides a minimal foundation that can be expanded into a richer
 application as more features (such as item tracking or statistics) are added.
 
