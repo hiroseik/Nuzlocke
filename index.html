@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Nuzlocke Tracker</title>
+
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
-  <div id="root"></div>
+
   <script type="text/babel">
     function App() {
       const [routes, setRoutes] = React.useState([]);
@@ -23,11 +24,7 @@
       }, []);
 
       return (
-        <div>
-          {routes.map((row, idx) => (
-            <div key={idx} style={{ marginBottom: '1rem' }}>
-              <label style={{ marginRight: '0.5rem' }}>{row.Route}</label>
-              <select>
+
                 {row.Pokemon.split(';').map((p, index) => (
                   <option key={index} value={p.trim()}>{p.trim()}</option>
                 ))}
