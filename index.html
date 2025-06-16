@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Nuzlocke Tracker</title>
-  <!-- Use a local copy of the Bootswatch Cosmo theme so styling works offline -->
-  <link rel="stylesheet" href="cosmo.min.css" />
+
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
-  <div class="container py-4" id="root"></div>
+
   <script type="text/babel">
     function App() {
       const [routes, setRoutes] = React.useState([]);
@@ -25,12 +24,7 @@
       }, []);
 
       return (
-        <div>
-          <h1 className="mb-4">Nuzlocke Tracker</h1>
-          {routes.map((row, idx) => (
-            <div key={idx} className="mb-3">
-              <label className="form-label me-2">{row.Route}</label>
-              <select className="form-select d-inline-block w-auto">
+
                 {row.Pokemon.split(';').map((p, index) => (
                   <option key={index} value={p.trim()}>{p.trim()}</option>
                 ))}
